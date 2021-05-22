@@ -1,3 +1,9 @@
 {
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "emmet.excludeLanguages": [
+        "markdown"
+    ],
+    "emmet.includeLanguages": {
+        "html": "django-html"
+    }
 }
