@@ -1,4 +1,4 @@
-from .models import Availability, Booking
+from .models import Availability, Booking, Ticket
 from django.shortcuts import render
 from .forms import ContactForm, AvailabilityForm, BookingForm
 
@@ -74,7 +74,7 @@ def checked(request):
     if request.method == "POST":
         data = AvailabilityForm(request.POST)
         if data.is_valid():
-            check = Availability.objects.filter(
+            check = Ticket.objects.filter(
                 date=request.POST.get("date"), country=request.POST.get("country")
             )
 
