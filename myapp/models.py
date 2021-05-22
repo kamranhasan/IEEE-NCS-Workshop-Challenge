@@ -8,3 +8,13 @@ class Contact(models.Model):
     Message = models.CharField(max_length=500, default='message')
     def __str__(self):
         return self.Name
+
+class Availability(models.Model):
+    date = models.DateField()
+    country = models.CharField(max_length=30, default='Pakistan')
+
+class Booking(models.Model):
+    Name = models.CharField(max_length=30, default='')
+    date = models.DateField()
+    country = models.CharField(max_length=30, default='Pakistan')
+    contact = models.CharField(max_length=30, default='')

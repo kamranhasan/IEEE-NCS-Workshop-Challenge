@@ -74,15 +74,15 @@
                      
                         <form action="{% url 'checked' %}" method="POST"  >
                             {% csrf_token %}
-                            {% block checkform %}
+                            {% block availabilityform %}
                             {% load crispy_forms_tags %}
-                        {{ checkform|crispy}}
+                        {{ availabilityform|crispy}}
                             
         
                             <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
-                                <button class="btn btn-secondary" type="submit">{{ respond1 }}</button>
+                                <button class="btn btn-secondary" type="submit">{{ availabilityresponse }}</button>
                               </div>
-                            {% endblock checkform %}
+                            {% endblock availabilityform %}
                           </form>
                      
                         
@@ -91,15 +91,15 @@
                     <div class="tab-pane fade {{ showactivebook }}" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <form action="{% url 'booked' %}" method="POST"  >
                             {% csrf_token %}
-                            {% block bookform %}
+                            {% block bookingform %}
                             {% load crispy_forms_tags %}
-                        {{ bookform|crispy}}
+                        {{ bookingform|crispy}}
                             
         
                             <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
-                                <button class="btn btn-secondary" type="submit">{{ respond2 }}</button>
+                                <button class="btn btn-secondary" type="submit">{{ bookingresponse }}</button>
                               </div>
-                            {% endblock bookform %}
+                            {% endblock bookingform %}
                           </form>
                     </div>
                   </div>
@@ -593,7 +593,7 @@
                             
         
                             <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
-                                <button class="btn btn-secondary" type="submit">{{ respond3 }}</button>
+                                <button class="btn btn-secondary" type="submit">{{ contactresponse }}</button>
                               </div>
                             {% endblock contactform %}
                           </form>
