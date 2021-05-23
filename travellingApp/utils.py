@@ -14,3 +14,21 @@ def getTicketsArray():
             numTickets.append(j + 1)
         tickets[j].append(allTickets[i])
     return activeTickets, numTickets, tickets
+
+
+def getPackagesArray():
+    countries = Ticket.objects.order_by("country").values("country").distinct()
+    packages = []
+    for country in countries:
+        tickets = Ticket.objects.filter(country=country["country"])
+        numPackages = len(tickets)
+        picture = tickets[0].picture
+        packages.append(
+            {
+                "country": country["country"],
+                "picture": picture,
+                "numPackages": numPackages,
+            }
+        )
+    packages = sorted(packages, key=lambda k: k["numPackages"], reverse=True)
+    return packages

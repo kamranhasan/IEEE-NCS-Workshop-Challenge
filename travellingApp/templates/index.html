@@ -404,9 +404,9 @@
 
 
     <section class="py-7 overflow-hidden" id="destinations">
-      <div class="container bg-offcanvas-gray-right">
+      <div class="container py-3" style='background: rgb(243, 243, 243)'>
         <div class="row gx-2 mb-2">
-          <div class="col-12 col-md-12 col-lg-4">
+          <div class="col-12 col-md-6">
             <div class="bg-primary-gradient bg-offcanvas h-100">
               <div class="row g-0 justify-content-end">
                 <div class="col-12">
@@ -423,70 +423,34 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="card card-span h-100 text-white">
-              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/agra.png' %}" height="375"
-                alt="..." />
-              <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
-                <div class="mt-auto px-4">
-                  <h3 class="fs-1 fs-md-2 text-white">
-                    Pakistan
-                  </h3>
-                  <span class="text-light fs--1 me-1">
-                    <i class="fas fa-gift"></i>
-                  </span>
-                  <span class="text-light me-3">
-                    10 Packages
-                  </span>
-                </div>
-              </div>
-              <a class="stretched-link" href="#!">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-lg-4">
-            <div class="card card-span h-100 text-white">
-              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/agra.png' %}" height="375"
-                alt="..." />
-              <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
-                <div class="mt-auto px-4">
-                  <h3 class="fs-1 fs-md-2 text-white">
-                    Pakistan
-                  </h3>
-                  <span class="text-light fs--1 me-1">
-                    <i class="fas fa-gift"></i>
-                  </span>
-                  <span class="text-light me-3">
-                    10 Packages
-                  </span>
-                </div>
-              </div>
-              <a class="stretched-link" href="#!">
-              </a>
-            </div>
-          </div>
-
-
-          <div class="col-sm-6 col-lg-4">
-            <div class="card card-span h-100 text-white">
-              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/kualalumpur.png' %}" height="375"
-                alt="..." />
-              <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
-                <div class="mt-auto px-4">
-                  <h3 class="fs-1 fs-md-2 text-white">Kuala Lumpur</h3>
-                  <span class="text-light fs--1 me-1">
-                    <i class="fas fa-gift"></i>
-                  </span>
-                  <span class="text-light me-3">
-                    10 Packages
-                  </span>
-                </div>
-              </div>
-              <a class="stretched-link" href="#!"></a>
-            </div>
-          </div>
         </div>
+        <br>
+        <div class="row">
+          {% for package in packages %}
+          <div class="col-sm-6 col-lg-4 py-2">
+            <div class="card card-span h-100 text-white">
+              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/agra.png' %}" height="375"
+                alt="..." />
+              <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
+                <div class="mt-auto px-4">
+                  <h3 class="fs-1 fs-md-2 text-white">
+                    {{package.country}}
+                  </h3>
+                  <span class="text-light fs--1 me-1">
+                    <i class="fas fa-gift"></i>
+                  </span>
+                  <span class="text-light me-3">
+                    {{package.numPackages}} Packages
+                  </span>
+                </div>
+              </div>
+              <a class="stretched-link" href="#!">
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
       </div>
       </div>
     </section>

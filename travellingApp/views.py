@@ -1,7 +1,7 @@
 from .models import Availability, Booking, Ticket
 from django.shortcuts import render
 from .forms import ContactForm, AvailabilityForm, BookingForm
-from .utils import getTicketsArray
+from .utils import getTicketsArray, getPackagesArray
 
 # Create your views here.
 def home(request):
@@ -15,6 +15,7 @@ def home(request):
             "activeTickets": getTicketsArray()[0],
             "numTickets": getTicketsArray()[1],
             "tickets": getTicketsArray()[2],
+            "packages": getPackagesArray(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
@@ -40,6 +41,7 @@ def contacted(request):
                     "activeTickets": getTicketsArray()[0],
                     "numTickets": getTicketsArray()[1],
                     "tickets": getTicketsArray()[2],
+                    "packages": getPackagesArray(),
                     "contactresponse": "Your Message Has Been Sent Successfully",
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
@@ -55,6 +57,7 @@ def contacted(request):
                     "activeTickets": getTicketsArray()[0],
                     "numTickets": getTicketsArray()[1],
                     "tickets": getTicketsArray()[2],
+                    "packages": getPackagesArray(),
                     "contactresponse": "Your Message Has not been sent Successfully",
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
@@ -70,6 +73,7 @@ def contacted(request):
             "activeTickets": getTicketsArray()[0],
             "numTickets": getTicketsArray()[1],
             "tickets": getTicketsArray()[2],
+            "packages": getPackagesArray(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
@@ -104,6 +108,7 @@ def checked(request):
                     "activeTickets": getTicketsArray()[0],
                     "numTickets": getTicketsArray()[1],
                     "tickets": getTicketsArray()[2],
+                    "packages": getPackagesArray(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingform": bookingform,
@@ -119,6 +124,7 @@ def checked(request):
                     "activeTickets": getTicketsArray()[0],
                     "numTickets": getTicketsArray()[1],
                     "tickets": getTicketsArray()[2],
+                    "packages": getPackagesArray(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingform": bookingform,
@@ -135,6 +141,7 @@ def checked(request):
             "activeTickets": getTicketsArray()[0],
             "numTickets": getTicketsArray()[1],
             "tickets": getTicketsArray()[2],
+            "packages": getPackagesArray(),
             "ticketActive": True,
             "contactform": contactform,
             "contactresponse": "Get in touch",
@@ -161,6 +168,7 @@ def booked(request):
                     "activeTickets": getTicketsArray()[0],
                     "numTickets": getTicketsArray()[1],
                     "tickets": getTicketsArray()[2],
+                    "packages": getPackagesArray(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingresponse": "Your Flight is booked we would contact you in a bit",
@@ -174,6 +182,7 @@ def booked(request):
             "activeTickets": getTicketsArray()[0],
             "numTickets": getTicketsArray()[1],
             "tickets": getTicketsArray()[2],
+            "packages": getPackagesArray(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
