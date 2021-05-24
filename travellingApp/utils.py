@@ -32,3 +32,14 @@ def getPackagesArray():
         )
     packages = sorted(packages, key=lambda k: k["numPackages"], reverse=True)
     return packages
+
+
+def getFeaturedTrips():
+    featuredTrips = Ticket.objects.filter(trending=True)
+    activeTrip = featuredTrips[0]
+    trips = featuredTrips[1:]
+    numTrips = [i for i in range(1, len(trips) + 1)]
+    print(
+        activeTrip, numTrips, trips, "************************************************"
+    )
+    return activeTrip, numTrips, trips
