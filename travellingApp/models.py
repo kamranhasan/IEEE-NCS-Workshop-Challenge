@@ -1,4 +1,5 @@
 from django.db import models
+from django_countries.fields import CountryField
 
 
 class Contact(models.Model):
@@ -11,22 +12,17 @@ class Contact(models.Model):
         return self.Name
 
 
-class Availability(models.Model):
-    date = models.DateField()
-    country = models.CharField(max_length=30, default="Pakistan")
-
-
 class Booking(models.Model):
     Name = models.CharField(max_length=30, default="")
     date = models.DateField()
-    country = models.CharField(max_length=30, default="Pakistan")
+    country = CountryField()
     contact = models.CharField(max_length=30, default="")
 
 
 class Ticket(models.Model):
     Name = models.CharField(max_length=100)
     date = models.DateField()
-    country = models.CharField(max_length=30, default="Pakistan")
+    country = CountryField()
     picture = models.ImageField(
         upload_to="uploads/places/",
         max_length=100,
@@ -59,3 +55,11 @@ class Hotel(models.Model):
         max_length=100,
         default="uploads/hotels/IslamabadHotel.jpg",
     )
+
+
+class Flight(models.Model):
+    locFrom = models.CharField(max_length=30, default="Dubai")
+    locTo = models.CharField(max_length=30, default="Karachi")
+    price = models.IntegerField(default=100)
+    country = CountryField()
+    date = models.DateField()

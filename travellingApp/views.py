@@ -1,18 +1,19 @@
-from .models import Availability, Booking, Ticket
+from .models import Booking, Flight, Ticket
 from django.shortcuts import render
-from .forms import ContactForm, AvailabilityForm, BookingForm
+from .forms import ContactForm, BookingForm, FlightForm
 from .utils import (
     getTicketsArray,
     getPackagesArray,
     getFeaturedTrips,
     getActivities,
     getHotels,
+    getFlights,
 )
 
 # Create your views here.
 def home(request):
     contactform = ContactForm()
-    availabilityform = AvailabilityForm()
+    flightform = FlightForm()
     bookingform = BookingForm()
     return render(
         request,
@@ -29,11 +30,12 @@ def home(request):
             "numActivities": getActivities()[1],
             "activities": getActivities()[2],
             "hotels": getHotels(),
+            "flights": getFlights(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
             "bookingresponse": "Book Your Flight",
-            "availabilityform": availabilityform,
+            "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
         },
     )
@@ -41,7 +43,7 @@ def home(request):
 
 def contacted(request):
     contactform = ContactForm()
-    availabilityform = AvailabilityForm()
+    flightform = FlightForm()
     bookingform = BookingForm()
     if request.method == "POST":
         data = ContactForm(request.POST)
@@ -62,10 +64,11 @@ def contacted(request):
                     "numActivities": getActivities()[1],
                     "activities": getActivities()[2],
                     "hotels": getHotels(),
+                    "flights": getFlights(),
                     "contactresponse": "Your Message Has Been Sent Successfully",
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
-                    "availabilityform": availabilityform,
+                    "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
                 },
             )
@@ -85,10 +88,11 @@ def contacted(request):
                     "numActivities": getActivities()[1],
                     "activities": getActivities()[2],
                     "hotels": getHotels(),
+                    "flights": getFlights(),
                     "contactresponse": "Your Message Has not been sent Successfully",
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
-                    "availabilityform": availabilityform,
+                    "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
                 },
             )
@@ -108,11 +112,12 @@ def contacted(request):
             "numActivities": getActivities()[1],
             "activities": getActivities()[2],
             "hotels": getHotels(),
+            "flights": getFlights(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
             "bookingresponse": "Book Your Flight",
-            "availabilityform": availabilityform,
+            "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
         },
     )
@@ -120,13 +125,13 @@ def contacted(request):
 
 def checked(request):
     contactform = ContactForm()
-    availabilityform = AvailabilityForm()
+    flightform = FlightForm()
     bookingform = BookingForm()
 
     if request.method == "POST":
-        data = AvailabilityForm(request.POST)
+        data = FlightForm(request.POST)
         if data.is_valid():
-            check = Ticket.objects.filter(
+            check = Flight.objects.filter(
                 date=request.POST.get("date"), country=request.POST.get("country")
             )
 
@@ -150,6 +155,7 @@ def checked(request):
                     "numActivities": getActivities()[1],
                     "activities": getActivities()[2],
                     "hotels": getHotels(),
+                    "flights": getFlights(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingform": bookingform,
@@ -173,11 +179,12 @@ def checked(request):
                     "numActivities": getActivities()[1],
                     "activities": getActivities()[2],
                     "hotels": getHotels(),
+                    "flights": getFlights(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
-                    "availabilityform": availabilityform,
+                    "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
                 },
             )
@@ -197,11 +204,12 @@ def checked(request):
             "numActivities": getActivities()[1],
             "activities": getActivities()[2],
             "hotels": getHotels(),
+            "flights": getFlights(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
             "bookingresponse": "Book Your Flight",
-            "availabilityform": availabilityform,
+            "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
         },
     )
@@ -209,7 +217,7 @@ def checked(request):
 
 def booked(request):
     contactform = ContactForm()
-    availabilityform = AvailabilityForm()
+    flightform = FlightForm()
     bookingform = BookingForm()
     if request.method == "POST":
         data = BookingForm(request.POST)
@@ -230,6 +238,7 @@ def booked(request):
                     "numActivities": getActivities()[1],
                     "activities": getActivities()[2],
                     "hotels": getHotels(),
+                    "flights": getFlights(),
                     "contactform": contactform,
                     "contactresponse": "Get in touch",
                     "bookingresponse": "Your Flight is booked we would contact you in a bit",
@@ -251,11 +260,12 @@ def booked(request):
             "numActivities": getActivities()[1],
             "activities": getActivities()[2],
             "hotels": getHotels(),
+            "flights": getFlights(),
             "contactform": contactform,
             "contactresponse": "Get in touch",
             "bookingform": bookingform,
             "bookingresponse": "Book Your Flight",
-            "availabilityform": availabilityform,
+            "availabilityform": flightform,
             "availabilityresponse": "Available, Kindly proceed to booking",
         },
     )

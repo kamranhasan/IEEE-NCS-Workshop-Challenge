@@ -231,7 +231,7 @@
                     {% for ticket in activeTickets %}
                     <div class="col-md-4 mb-3 mb-md-0 h-100">
                       <div class="card card-span h-100 text-white">
-                        <img class="img-fluid h-100" src="{% static 'assets/img/gallery/dhigu.png' %}" alt="..." />
+                        <img class="" height="250px" src=media/{{ticket.picture}} alt="..." />
                         <div class="card-img-overlay ps-0">
                           <div class="pt-3">
                             <span class="badge bg-primary ms-3 me-1">
@@ -301,7 +301,7 @@
                     {% for ticket in ticketsArray %}
                     <div class="col-md-4 mb-3 mb-md-0 h-100">
                       <div class="card card-span h-100 text-white">
-                        <img class="img-fluid h-100" src="{% static 'assets/img/gallery/dhigu.png' %}" alt="..." />
+                        <img class="img-fluid h-100" src=media/{{ticket.picture}} alt="..." />
                         <div class="card-img-overlay ps-0">
                           <div class="pt-3">
                             <span class="badge bg-primary ms-3 me-1">
@@ -429,8 +429,7 @@
           {% for package in packages %}
           <div class="col-sm-6 col-lg-4 py-2">
             <div class="card card-span h-100 text-white">
-              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/agra.png' %}" height="375"
-                alt="..." />
+              <img class="img-fluid h-100 w-100" src=media/{{package.picture}} height="375" alt="..." />
               <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
                 <div class="mt-auto px-4">
                   <h3 class="fs-1 fs-md-2 text-white">
@@ -476,7 +475,7 @@
                 <div class="carousel-item active" data-bs-interval="10000">
                   <div class="row h-100">
                     <div class="col-12">
-                      <img class="w-100" src="{% static 'assets/img/gallery/dubai.png' %}" height="600" alt="..." />
+                      <img class="w-100" src=media/{{activeTrip.picture}} height="600" alt="..." />
                       <div class="py-4 ps-sm-5">
                         <h4 class="mb-2 text-1000">Share a Trip</h4>
                         <h2 class="mb-3 text-primary fs-3 fs-md-6">{{activeTrip.city}}</h2>
@@ -489,7 +488,7 @@
                 <div class="carousel-item" data-bs-interval="10000">
                   <div class="row h-100">
                     <div class="col-12">
-                      <img class="w-100" src="{% static 'assets/img/gallery/dubai.png' %}" height="600" alt="..." />
+                      <img class="w-100" src=media/{{trip.picture}} height="600" alt="..." />
                       <div class="py-4 ps-sm-5">
                         <h4 class="mb-2 text-1000">Share a Trip</h4>
                         <h2 class="mb-3 text-primary fs-3 fs-md-6">{{trip.city}}</h2>
@@ -597,7 +596,7 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-12 col-lg-4 py-3">
+          <div class="col-md-6 col-lg-4 py-3">
             <div class="bg-primary-gradient h-100 d-flex align-items-end">
               <div class="row g-0 justify-content-start">
                 <div class="col-xl-9">
@@ -612,10 +611,9 @@
           </div>
 
           {% for hotel in hotels %}
-          <div class="col-sm-6 col-lg-4 py-3">
+          <div class="col-md-6 col-lg-4 py-3" style="height: 375px;">
             <div class="card card-span h-100 text-white">
-              <img class="img-fluid h-100 w-100" src="{% static 'assets/img/gallery/moon-house-hotel.png' %}"
-                height="375" alt="..." />
+              <img class="img-fluid h-100 w-100" src=media/{{hotel.picture}} height="375" alt="..." />
               <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
                 <div class="mt-auto px-4">
                   <h3 class="fs-1 fs-md-2 text-white">{{hotel.Name}}</h3>
@@ -647,102 +645,16 @@
           </div>
         </div>
         <div class="row g-0 flex-center">
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#240D8C; min-height:230px; ">
-              <h5 class="text-light">Dhaka - Chittagong</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#3011BB; min-height:230px;">
-              <h5 class="text-light">Dhaka - Sylhet</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#4914DC; min-height:230px;">
-              <h5 class="text-light">Dhaka - Chittagong</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#6213D2; min-height:230px;">
-              <h5 class="text-light">Dhaka - Chittagong</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
+          {% for flight in flights %}
           <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
             <div class="d-flex flex-column justify-content-center px-3"
               style="background-color:#4611BC; min-height:230px;">
-              <h5 class="text-light">Dhaka - Coxs Bazar</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
+              <h5 class="text-light">{{flight.locFrom}} - {{flight.locTo}}</h5>
+              <h6 class="text-light fw-normal fs-0">From ${{flight.price}}</h6><i
+                class="fas fa-arrow-right text-light mt-4"></i><a class="stretched-link" href="#!"></a>
             </div>
           </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#7013CE; min-height:230px;">
-              <h5 class="text-light">Dhaka - Sylhet</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#4611BC; min-height:230px;">
-              <h5 class="text-light">Dhaka - Coxs Bazar</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#6213D2; min-height:230px;">
-              <h5 class="text-light">Dhaka - Chittagong</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#240D8C; min-height:230px;">
-              <h5 class="text-light">Dhaka - Coxs Bazar</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#4914DC; min-height:230px;">
-              <h5 class="text-light">Dhaka - Sylhet</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#3011BB; min-height:230px;">
-              <h5 class="text-light">Dhaka - Chittagong</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
-              style="background-color:#4611BC; min-height:230px;">
-              <h5 class="text-light">Dhaka - Coxs Bazar</h5>
-              <h6 class="text-light fw-normal fs-0">From $100</h6><i class="fas fa-arrow-right text-light mt-4"></i><a
-                class="stretched-link" href="#!"></a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>

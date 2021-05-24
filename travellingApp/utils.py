@@ -1,4 +1,4 @@
-from .models import Activity, Hotel, Ticket
+from .models import Activity, Flight, Hotel, Ticket
 
 
 def getTicketsArray():
@@ -13,6 +13,10 @@ def getTicketsArray():
             tickets.append([])
             numTickets.append(j + 1)
         tickets[j].append(allTickets[i])
+    print(
+        "**************b             *****************  8****************",
+        activeTickets[0].picture,
+    )
     return activeTickets, numTickets, tickets
 
 
@@ -53,3 +57,8 @@ def getActivities():
 def getHotels():
     allHotels = Hotel.objects.all()
     return allHotels
+
+
+def getFlights():
+    allFlights = Flight.objects.all()
+    return allFlights
