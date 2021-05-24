@@ -1,4 +1,4 @@
-from .models import Ticket
+from .models import Activity, Hotel, Ticket
 
 
 def getTicketsArray():
@@ -39,7 +39,17 @@ def getFeaturedTrips():
     activeTrip = featuredTrips[0]
     trips = featuredTrips[1:]
     numTrips = [i for i in range(1, len(trips) + 1)]
-    print(
-        activeTrip, numTrips, trips, "************************************************"
-    )
     return activeTrip, numTrips, trips
+
+
+def getActivities():
+    allActivities = Activity.objects.all()
+    activeActivity = allActivities[0]
+    activities = allActivities[1:]
+    numActivities = [i for i in range(1, len(activities) + 1)]
+    return activeActivity, numActivities, activities
+
+
+def getHotels():
+    allHotels = Hotel.objects.all()
+    return allHotels
