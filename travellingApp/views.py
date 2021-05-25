@@ -37,6 +37,8 @@ def home(request):
             "bookingresponse": "Book Your Flight",
             "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
+            "availabilityTab": "show active",
+            "bookingTab": "",
         },
     )
 
@@ -70,6 +72,8 @@ def contacted(request):
                     "bookingresponse": "Book Your Flight",
                     "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
+                    "availabilityTab": "show active",
+                    "bookingTab": "",
                 },
             )
         else:
@@ -94,6 +98,8 @@ def contacted(request):
                     "bookingresponse": "Book Your Flight",
                     "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
+                    "availabilityTab": "show active",
+                    "bookingTab": "",
                 },
             )
 
@@ -119,6 +125,8 @@ def contacted(request):
             "bookingresponse": "Book Your Flight",
             "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
+            "availabilityTab": "show active",
+            "bookingTab": "",
         },
     )
 
@@ -161,6 +169,8 @@ def checked(request):
                     "bookingform": bookingform,
                     "bookingresponse": "Book Your Flight",
                     "availabilityresponse": availabilityresponse,
+                    "availabilityTab": "show active",
+                    "bookingTab": "",
                 },
             )
         else:
@@ -186,6 +196,8 @@ def checked(request):
                     "bookingresponse": "Book Your Flight",
                     "availabilityform": flightform,
                     "availabilityresponse": "Check Availability",
+                    "availabilityTab": "show active",
+                    "bookingTab": "",
                 },
             )
 
@@ -211,6 +223,8 @@ def checked(request):
             "bookingresponse": "Book Your Flight",
             "availabilityform": flightform,
             "availabilityresponse": "Check Availability",
+            "availabilityTab": "show active",
+            "bookingTab": "",
         },
     )
 
@@ -243,6 +257,8 @@ def booked(request):
                     "contactresponse": "Get in touch",
                     "bookingresponse": "Your Flight is booked we would contact you in a bit",
                     "availabilityresponse": "Available, Kindly proceed to booking",
+                    "availabilityTab": "",
+                    "bookingTab": "show active",
                 },
             )
     return render(
@@ -267,5 +283,7 @@ def booked(request):
             "bookingresponse": "Book Your Flight",
             "availabilityform": flightform,
             "availabilityresponse": "Available, Kindly proceed to booking",
+            "availabilityTab": "show active",
+            "bookingTab": "",
         },
     )

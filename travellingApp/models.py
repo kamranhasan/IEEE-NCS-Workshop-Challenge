@@ -3,10 +3,10 @@ from django_countries.fields import CountryField
 
 
 class Contact(models.Model):
-    Name = models.CharField(max_length=100, default="user")
-    Email = models.CharField(max_length=50, default="email")
-    Subject = models.CharField(max_length=100, default="subject")
-    Message = models.CharField(max_length=500, default="message")
+    Name = models.CharField(max_length=100, default="")
+    Email = models.CharField(max_length=50, default="")
+    Subject = models.CharField(max_length=100, default="")
+    Message = models.CharField(max_length=500, default="")
 
     def __str__(self):
         return self.Name

@@ -1,10 +1,19 @@
 from .models import Activity, Flight, Hotel, Ticket
+from django_countries import countries
 
 
 def getTicketsArray():
     tickets = []
-    activeTickets = Ticket.objects.all()[:3]
-    allTickets = Ticket.objects.all()[3:]
+    startTickets = Ticket.objects.all().values()[:3]
+    activeTickets = []
+
+    for ticket in startTickets:
+        ticket["discounted"] = ticket["price"] - (
+            ticket["discount"] * ticket["price"] / 100
+        )
+        activeTickets.append(ticket)
+
+    allTickets = Ticket.objects.all().values()[3:]
     numTickets = []
     j = -1
     for i in range(len(allTickets)):
@@ -12,24 +21,25 @@ def getTicketsArray():
             j += 1
             tickets.append([])
             numTickets.append(j + 1)
-        tickets[j].append(allTickets[i])
-    print(
-        "**************b             *****************  8****************",
-        activeTickets[0].picture,
-    )
+        ticket = allTickets[i]
+        ticket["discounted"] = ticket["price"] - (
+            ticket["discount"] * ticket["price"] / 100
+        )
+        tickets[j].append(ticket)
+
     return activeTickets, numTickets, tickets
 
 
 def getPackagesArray():
-    countries = Ticket.objects.order_by("country").values("country").distinct()
+    myCountries = Ticket.objects.order_by("country").values("country").distinct()
     packages = []
-    for country in countries:
+    for country in myCountries:
         tickets = Ticket.objects.filter(country=country["country"])
         numPackages = len(tickets)
         picture = tickets[0].picture
         packages.append(
             {
-                "country": country["country"],
+                "country": dict(countries)[country["country"]],
                 "picture": picture,
                 "numPackages": numPackages,
             }

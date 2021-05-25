@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% load static %}
+
   <title>IEEE | Travel with IEEE &amp; </title>
 
   <!-- ===============================================-->
@@ -102,7 +103,7 @@
     </nav>
     <section class="mt-7 py-0">
       <div class="bg-holder w-50 bg-right d-none d-lg-block"
-        style="background-image:url({% static 'assets/img/gallery/hero-section-1.png' %});">
+        style="background-image:url({% static 'assets/img/gallery/hero-section-1.png' %})">
       </div>
       <!--/.bg-holder-->
 
@@ -114,28 +115,28 @@
             <div class="pt-5">
               <nav>
                 <div class="nav nav-tabs voyage-tabs" id="nav-tab" role="tablist">
-                  <button class="nav-link {{ checkactive }}" id="nav-home-tab" data-bs-toggle="tab"
-                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                  <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                     <i class="fas fa-map-marker-alt"></i>
-                    Check Availibility
+                    <strong><em>Check Availibility</em></strong>
                   </button>
-                  <button class="nav-link {{ bookactive}}" id="nav-contact-tab" data-bs-toggle="tab"
-                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                    aria-selected="false">
+                  <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                    type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                     <i class="fas fa-hotel"></i>
-                    Book Your Flight
+                    <strong><em>Book Your Flight</em></strong>
                   </button>
                 </div>
                 <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade {{ showactivecheck }}" id="nav-home" role="tabpanel"
+                  <div class="tab-pane fade {{ availabilityTab }}" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
+                    <br>
                     <form action="{% url 'checked' %}" method="POST">
                       {% csrf_token %}
                       {% block availabilityform %}
                       {% load crispy_forms_tags %}
                       {{ availabilityform|crispy}}
 
-                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-4">
                         <button class="btn btn-secondary" type="submit">{{ availabilityresponse }}</button>
                       </div>
                       {% endblock availabilityform %}
@@ -144,8 +145,9 @@
 
                   </div>
 
-                  <div class="tab-pane fade {{ showactivebook }}" id="nav-contact" role="tabpanel"
+                  <div class="tab-pane fade {{ bookingTab }}" id="nav-contact" role="tabpanel"
                     aria-labelledby="nav-contact-tab">
+                    <br>
                     <form action="{% url 'booked' %}" method="POST">
                       {% csrf_token %}
                       {% block bookingform %}
@@ -153,7 +155,7 @@
                       {{ bookingform|crispy}}
 
 
-                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-4">
                         <button class="btn btn-secondary" type="submit">{{ bookingresponse }}</button>
                       </div>
                       {% endblock bookingform %}
@@ -281,7 +283,7 @@
                             {{ ticket.price|floatformat:"0" }}</p>
                           <h1 class="mb-3 text-primary fw-bolder fs-4">
                             <span>Rs.
-                              {{ ticket.price|floatformat:"0"}}</span>
+                              {{ ticket.discounted|floatformat:"0"}}</span>
                             <span class="text-900 fs--1 fw-normal"></span>
                           </h1>
                           <span class="badge bg-soft-secondary">
@@ -301,7 +303,7 @@
                     {% for ticket in ticketsArray %}
                     <div class="col-md-4 mb-3 mb-md-0 h-100">
                       <div class="card card-span h-100 text-white">
-                        <img class="img-fluid h-100" src=media/{{ticket.picture}} alt="..." />
+                        <img class="" height="250px" src=media/{{ticket.picture}} alt="..." />
                         <div class="card-img-overlay ps-0">
                           <div class="pt-3">
                             <span class="badge bg-primary ms-3 me-1">
@@ -351,7 +353,7 @@
                             {{ ticket.price|floatformat:"0" }}</p>
                           <h1 class="mb-3 text-primary fw-bolder fs-4">
                             <span>Rs.
-                              {{ ticket.price|floatformat:"0"}}</span>
+                              {{ ticket.discounted|floatformat:"0"}}</span>
                             <span class="text-900 fs--1 fw-normal"></span>
                           </h1>
                           <span class="badge bg-soft-secondary">
@@ -465,7 +467,7 @@
       </div>
       <!--/.bg-holder-->
 
-      <div class="container">
+      <div class="container" id='facilities'>
         <div class="row g-0">
           <div class="col-lg-4 order-1 order-lg-0"> </div>
           <div class="col-lg-8 bg-white">
@@ -602,7 +604,7 @@
                 <div class="col-xl-9">
                   <div class="p-3 px-lg-4 text-light">
                     <i class="fas fa-hotel fs-5 mb-3"></i>
-                    <h2 class="mb-3 text-light">Explore The Beauty Of Adventure with IEEE</h2>
+                    <h2 class="mb-3 text-light" id="explore">Explore The Beauty Of Adventure with IEEE</h2>
                     <p> Known for its exceptional services and beautiful ambiance. </p>
                   </div>
                 </div>
@@ -646,8 +648,8 @@
         </div>
         <div class="row g-0 flex-center">
           {% for flight in flights %}
-          <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
-            <div class="d-flex flex-column justify-content-center px-3"
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="d-flex flex-column justify-content-center align-items-center px-3"
               style="background-color:#4611BC; min-height:230px;">
               <h5 class="text-light">{{flight.locFrom}} - {{flight.locTo}}</h5>
               <h6 class="text-light fw-normal fs-0">From ${{flight.price}}</h6><i
@@ -687,15 +689,12 @@
                       {{ contactform|crispy}}
 
 
-                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                      <div class="col-12 col-xl-10 col-lg-12 d-grid mt-4">
                         <button class="btn btn-secondary" type="submit">{{ contactresponse }}</button>
                       </div>
                       {% endblock contactform %}
                     </form>
-
-
                   </div>
-
                 </div>
               </nav>
             </div>
