@@ -1,4 +1,4 @@
-from .models import Booking, Flight, Ticket
+from .models import Flight
 from django.shortcuts import render
 from .forms import ContactForm, BookingForm, FlightForm
 from .utils import (
